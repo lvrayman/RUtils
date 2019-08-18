@@ -9,16 +9,16 @@ import android.util.Log
 object RLog {
     var isLog = true
 
-    private var m_tag = "RLog"
+    private var tag = "RLog"
 
     fun setTag(tag: String) {
-        m_tag = tag
+        this.tag = tag
     }
 
     fun debug(msg: String) {
         if (isLog) {
             Throwable().stackTrace[1]?.let {
-                Log.d(m_tag, "[" + it.fileName + ":" + it.lineNumber + "]: " + msg)
+                Log.d(tag, "[" + it.fileName + ":" + it.lineNumber + "]: " + msg)
             }
         }
 
@@ -27,7 +27,7 @@ object RLog {
     fun warn(msg: String) {
         if (isLog) {
             Throwable().stackTrace[1]?.let {
-                Log.w(m_tag, "[" + it.fileName + ":" + it.lineNumber + "]: " + msg)
+                Log.w(tag, "[" + it.fileName + ":" + it.lineNumber + "]: " + msg)
             }
         }
     }
@@ -35,7 +35,7 @@ object RLog {
     fun info(msg: String) {
         if (isLog) {
             Throwable().stackTrace[1]?.let {
-                Log.i(m_tag, "[" + it.fileName + ":" + it.lineNumber + "]: " + msg)
+                Log.i(tag, "[" + it.fileName + ":" + it.lineNumber + "]: " + msg)
             }
         }
     }
@@ -43,7 +43,7 @@ object RLog {
     fun error(msg: String) {
         if (isLog) {
             Throwable().stackTrace[1]?.let {
-                Log.e(m_tag, "[" + it.fileName + ":" + it.lineNumber + "]: " + msg)
+                Log.e(tag, "[" + it.fileName + ":" + it.lineNumber + "]: " + msg)
             }
         }
     }
