@@ -1,7 +1,9 @@
 package com.rayman.r_utils.view
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.view.inputmethod.InputMethodManager
 
@@ -55,4 +57,8 @@ fun View.doOnLayout(onLayout: (View) -> Boolean) {
             }
         }
     })
+}
+
+fun ViewGroup.inflate(id: Int) {
+    LayoutInflater.from(context).inflate(id, this)
 }
