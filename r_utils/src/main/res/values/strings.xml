@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RUtils</string>
+    <string name="ok_r">确定</string>
+    <string name="cancel_r">取消</string>
 </resources>
