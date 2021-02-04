@@ -59,7 +59,9 @@ object RLog {
     fun debug(where: String = "", vararg msg: Any) {
         if (isLog) {
             throwable.stackTrace[1]?.let {
-                val message = getMessage(it, where, listOf(msg))
+                val list = arrayListOf<Any>()
+                list.addAll(msg)
+                val message = getMessage(it, where, list)
                 val strLength = message.length
                 var start = 0
                 var end = 2000
@@ -82,7 +84,9 @@ object RLog {
     fun warn(where: String = "", vararg msg: Any) {
         if (isLog) {
             throwable.stackTrace[1]?.let {
-                val message = getMessage(it, where, listOf(msg))
+                val list = arrayListOf<Any>()
+                list.addAll(msg)
+                val message = getMessage(it, where, list)
                 val strLength = message.length
                 var start = 0
                 var end = 2000
@@ -104,7 +108,9 @@ object RLog {
     fun info(where: String, vararg msg: Any) {
         if (isLog) {
             throwable.stackTrace[1]?.let {
-                val message = getMessage(it, where, listOf(msg))
+                val list = arrayListOf<Any>()
+                list.addAll(msg)
+                val message = getMessage(it, where, list)
                 val strLength = message.length
                 var start = 0
                 var end = 2000
@@ -126,7 +132,9 @@ object RLog {
     fun error(where: String = "", vararg msg: Any) {
         if (isLog) {
             throwable.stackTrace[1]?.let {
-                val message = getMessage(it, where, listOf(msg))
+                val list = arrayListOf<Any>()
+                list.addAll(msg)
+                val message = getMessage(it, where, list)
                 val strLength = message.length
                 var start = 0
                 var end = 2000
