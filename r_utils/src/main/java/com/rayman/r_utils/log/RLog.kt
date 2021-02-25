@@ -32,10 +32,10 @@ object RLog {
         this.tag = tag
     }
 
-    fun verbose(where: String = "", vararg msg: Any) {
+    fun verbose(where: String = "", vararg msg: Any?) {
         if (isLog) {
             throwable.stackTrace[1]?.let {
-                val list = arrayListOf<Any>()
+                val list = arrayListOf<Any?>()
                 list.addAll(msg)
                 val message = getMessage(it, where, list)
                 val strLength = message.length
@@ -56,10 +56,10 @@ object RLog {
         }
     }
 
-    fun debug(where: String = "", vararg msg: Any) {
+    fun debug(where: String = "", vararg msg: Any?) {
         if (isLog) {
             throwable.stackTrace[1]?.let {
-                val list = arrayListOf<Any>()
+                val list = arrayListOf<Any?>()
                 list.addAll(msg)
                 val message = getMessage(it, where, list)
                 val strLength = message.length
@@ -81,10 +81,10 @@ object RLog {
 
     }
 
-    fun warn(where: String = "", vararg msg: Any) {
+    fun warn(where: String = "", vararg msg: Any?) {
         if (isLog) {
             throwable.stackTrace[1]?.let {
-                val list = arrayListOf<Any>()
+                val list = arrayListOf<Any?>()
                 list.addAll(msg)
                 val message = getMessage(it, where, list)
                 val strLength = message.length
@@ -105,10 +105,10 @@ object RLog {
         }
     }
 
-    fun info(where: String, vararg msg: Any) {
+    fun info(where: String, vararg msg: Any?) {
         if (isLog) {
             throwable.stackTrace[1]?.let {
-                val list = arrayListOf<Any>()
+                val list = arrayListOf<Any?>()
                 list.addAll(msg)
                 val message = getMessage(it, where, list)
                 val strLength = message.length
@@ -129,10 +129,10 @@ object RLog {
         }
     }
 
-    fun error(where: String = "", vararg msg: Any) {
+    fun error(where: String = "", vararg msg: Any?) {
         if (isLog) {
             throwable.stackTrace[1]?.let {
-                val list = arrayListOf<Any>()
+                val list = arrayListOf<Any?>()
                 list.addAll(msg)
                 val message = getMessage(it, where, list)
                 val strLength = message.length
@@ -153,7 +153,7 @@ object RLog {
         }
     }
 
-    private fun getMessage(it: StackTraceElement, where: String, dataList: List<Any>): String {
+    private fun getMessage(it: StackTraceElement, where: String, dataList: List<Any?>): String {
         sDate.time = System.currentTimeMillis()
         stringBuilder.apply {
             delete(0, length)
@@ -174,7 +174,7 @@ object RLog {
             val string = if (any is Throwable) {
                 getStringFromThrowable(any)
             } else {
-                any.toString()
+                any?.toString() ?: "null"
             }
             stringBuilder.append(string)
         }
