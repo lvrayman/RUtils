@@ -15,8 +15,7 @@ object RLog {
     var isLog = true
 
     private var tag = "RLog"
-    private val throwable: Throwable
-        get() = Throwable()
+    private val throwable = Throwable()
 
     private const val NEW_MESSAGE_SPLIT =
         "\n-----------------------------------------------------------------------------------------"
@@ -35,6 +34,7 @@ object RLog {
 
     fun verbose(where: String = "", vararg msg: Any?) {
         if (isLog) {
+            throwable.fillInStackTrace()
             throwable.stackTrace[1]?.let {
                 val list = arrayListOf<Any?>()
                 list.addAll(msg)
@@ -59,6 +59,7 @@ object RLog {
 
     fun debug(where: String = "", vararg msg: Any?) {
         if (isLog) {
+            throwable.fillInStackTrace()
             throwable.stackTrace[1]?.let {
                 val list = arrayListOf<Any?>()
                 list.addAll(msg)
@@ -84,6 +85,7 @@ object RLog {
 
     fun warn(where: String = "", vararg msg: Any?) {
         if (isLog) {
+            throwable.fillInStackTrace()
             throwable.stackTrace[1]?.let {
                 val list = arrayListOf<Any?>()
                 list.addAll(msg)
@@ -108,6 +110,7 @@ object RLog {
 
     fun info(where: String, vararg msg: Any?) {
         if (isLog) {
+            throwable.fillInStackTrace()
             throwable.stackTrace[1]?.let {
                 val list = arrayListOf<Any?>()
                 list.addAll(msg)
@@ -132,6 +135,7 @@ object RLog {
 
     fun error(where: String = "", vararg msg: Any?) {
         if (isLog) {
+            throwable.fillInStackTrace()
             throwable.stackTrace[1]?.let {
                 val list = arrayListOf<Any?>()
                 list.addAll(msg)
