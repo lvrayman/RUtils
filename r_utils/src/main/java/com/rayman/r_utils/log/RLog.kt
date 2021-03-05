@@ -15,7 +15,8 @@ object RLog {
     var isLog = true
 
     private var tag = "RLog"
-    private val throwable = Throwable()
+    private val throwable: Throwable
+        get() = Throwable()
 
     private const val NEW_MESSAGE_SPLIT =
         "\n-----------------------------------------------------------------------------------------"
